@@ -1,21 +1,36 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        val filteredInput = input.map { it.split("  ") }
+        val firstList = filteredInput.map { it[0].trim().toInt() }.sorted()
+        val secondList = filteredInput.map { it[1].trim().toInt() }.sorted()
+
+        return firstList.zip(secondList).sumOf {
+            if (it.first > it.second)
+                it.first - it.second
+            else
+                it.second - it.first
+        }
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        val filteredInput = input.map { it.split("  ") }
+        val firstList = filteredInput.map { it[0].trim().toInt() }
+        val secondList = filteredInput.map { it[1].trim().toInt() }
+        var result = 0
+
+        for (element in firstList) {
+            result += element * secondList.count { it == element }
+        }
+
+        return result
     }
 
-    // Test if implementation meets criteria from the description, like:
-    check(part1(listOf("test_input")) == 1)
-
-    // Or read a large test input from the `src/Day01_test.txt` file:
     val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    check(part1(testInput) == 11)
+    check(part2(testInput) == 31)
 
-    // Read the input from the `src/Day01.txt` file.
     val input = readInput("Day01")
+
     part1(input).println()
     part2(input).println()
 }
