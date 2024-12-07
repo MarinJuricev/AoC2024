@@ -4,8 +4,8 @@ fun main() {
     val testInput = readInput("Day02_test")
     val realInput = readInput("Day02")
 
-//    check(part1(testInput) == 2)
-//    part1(realInput).println()
+    check(part1(testInput) == 2)
+    part1(realInput).println()
 
     check(part2(testInput) == 4)
     part2(realInput).println()
