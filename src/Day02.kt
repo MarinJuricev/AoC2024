@@ -4,19 +4,19 @@ fun main() {
     val testInput = readInput("Day02_test")
     val realInput = readInput("Day02")
 
-//    check(part1(testInput) == 2)
-//    part1(realInput).println()
+    check(part1(testInput) == 2)
+    part1(realInput).println()
 
     check(part2(testInput) == 4)
     part2(realInput).println()
 }
 
-fun part1(input: List<String>): Int = input
+private fun part1(input: List<String>): Int = input
     .map { it.split(" ").map(String::toInt) }
     .map { it.processLine() }
     .reduce { acc, i -> acc + i }
 
-fun part2(input: List<String>): Int =
+private fun part2(input: List<String>): Int =
     input
         .map { it.split(" ").map(String::toInt) }
         .map { it.processAllLines() }
